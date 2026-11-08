@@ -1,4 +1,6 @@
 name: Deploy website to GitHub Pages
+# One-time setup: repository Settings -> Pages -> Build and deployment -> Source: "GitHub Actions".
+# (Pages on a private repo needs GitHub Pro/Team; otherwise make the repo public.)
 
 on:
   push:
@@ -22,10 +24,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Enable GitHub Pages (source = GitHub Actions) if not yet enabled
-        uses: actions/configure-pages@v5
-        with:
-          enablement: true
       - uses: actions/setup-node@v4
         with:
           node-version: 22

@@ -1,6 +1,7 @@
 /**
  * Render every composition to ../web/public/films/<id>.mp4 and a poster JPG.
- * Usage: node render.mjs [compId ...] [--scale=0.667] [--concurrency=2]
+ * Usage: node render.mjs [compId ...] [--scale=1] [--scale3d=2/3] [--concurrency=2]
+ * Scales must give integer pixel sizes: use fractions like 2/3 or 1/2, not 0.667.
  */
 import { bundle } from "@remotion/bundler";
 import { getCompositions, renderMedia, renderStill } from "@remotion/renderer";
@@ -13,7 +14,8 @@ const outDir = path.resolve(here, "../web/public/films");
 const args = process.argv.slice(2);
 const flag = (k, d) => { const a = args.find((x) => x.startsWith(`--${k}=`)); return a ? a.split("=")[1] : d; };
 const ids = args.filter((a) => !a.startsWith("--"));
-const scale = Number(flag("scale", "1"));
+const num = (v) => (v.includes("/") ? Number(v.split("/")[0]) / Number(v.split("/")[1]) : Number(v)); // "2/3" keeps 1920x1080 -> 1280x720 exact
+const scale = num(flag("scale", "1"));
 const concurrency = Number(flag("concurrency", "2"));
 const browserExecutable = process.env.CHROME_PATH ?? "/usr/bin/google-chrome";
 const chromiumOptions = { gl: "swangle", disableWebSecurity: false, headless: true };
@@ -26,7 +28,7 @@ const todo = comps.filter((c) => ids.length === 0 || ids.includes(c.id));
 console.log(`Bundled in ${((Date.now() - t0) / 1000).toFixed(1)}s. Rendering ${todo.map((c) => c.id).join(", ")}`);
 
 for (const c of todo) {
-  const s = THREE_D.has(c.id) ? Number(flag("scale3d", String(scale))) : scale;
+  const s = THREE_D.has(c.id) ? num(flag("scale3d", String(scale))) : scale;
   const start = Date.now();
   const outputLocation = path.join(outDir, `${c.id}.mp4`);
   let lastPct = -1;

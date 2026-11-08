@@ -18,14 +18,14 @@ Change a number or a sentence in `shared/content.ts` and both the site and the f
 npm install
 npm run dev          # website on http://localhost:5173
 npm run studio       # Remotion Studio for the films
-npm run render       # renders every film to web/public/films/*.mp4 (+ poster JPGs)
+npm run render       # renders every film to web/public/films/*.mp4 (+ poster JPGs); 3D films at 1280x720 by default
 npm run build        # production build to web/dist
 ```
 
 Rendering uses the system Chrome. Set `CHROME_PATH` if it is not at `/usr/bin/google-chrome`. Render a subset or lower the 3D resolution:
 
 ```bash
-node video/render.mjs m3-reveal exploded-walkthrough --scale3d=0.6667 --concurrency=2
+node video/render.mjs m3-reveal exploded-walkthrough --scale3d=2/3 --concurrency=2
 ```
 
 ## Deploy (GitHub Pages)

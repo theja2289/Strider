@@ -30,7 +30,7 @@ node video/render.mjs m3-reveal exploded-walkthrough --scale3d=2/3 --concurrency
 
 ## Deploy (GitHub Pages)
 
-`.github/workflows/deploy-pages.yml` builds `web/` on every push to `main` and publishes it to GitHub Pages at `https://<user>.github.io/<repo>/`.
+`.github/workflows/deploy-pages.yml` builds `web/` on every push to `main` and publishes it to GitHub Pages at `https://<user>.github.io/<repo>/`. The path keeps the repository's capitalisation, so this repo serves at **https://theja2289.github.io/Strider/** (a lowercase `/strider/` 404s). Rename the repo to lowercase, or add a custom domain, if you want a cleaner URL.
 
 One-time setup in the repository: **Settings → Pages → Build and deployment → Source: GitHub Actions**. GitHub Pages on a *private* repository requires GitHub Pro/Team; on a free account make the repository public (the content is a public marketing site anyway).
 

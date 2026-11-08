@@ -186,6 +186,11 @@ export const pilotProgram = {
   ],
 };
 
+/** Third-party video of the robot. */
+export const videos = [
+  { id: "LOBOMjjjusU", title: "This Made-In-India Robot Is Unstoppable", credit: "runtimebrt on YouTube", poster: "/photos/yt-runtimebrt.jpg" },
+];
+
 export const press = [
   { outlet: "Robotics & Automation News", title: "Strider Robotics demonstrates 40 kg payload quadruped robot as commercial pilots begin", date: "Jul 2026", url: "https://roboticsandautomationnews.com/2026/07/18/strider-robotics-demonstrates-40-kg-payload-quadruped-robot-as-commercial-pilots-begin/103453/" },
   { outlet: "Tech Times", title: "Strider Robotics takes IISc quadruped into commercial pilots at oil and gas sites", date: "Jul 2026", url: "https://www.techtimes.com/articles/320984/20260719/strider-robotics-takes-iisc-quadruped-commercial-pilots-oil-gas-sites.htm" },

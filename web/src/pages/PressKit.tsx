@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { company, product, heroStats, press, specSheet } from "@shared/content";
+import { company, product, heroStats, press, specSheet, videos } from "@shared/content";
 import Reveal from "../components/Reveal";
 import Logo from "../components/Logo";
 import { brand } from "@shared/brand";
@@ -61,6 +61,12 @@ export default function PressKit() {
           <div style={{ display: "grid", gap: 16 }}>
             <h2 className="h-section" style={{ fontSize: 30 }}>Coverage</h2>
             <div className="press-list">
+              {videos.map((v) => (
+                <a className="press-item" key={v.id} href={`https://www.youtube.com/watch?v=${v.id}`} target="_blank" rel="noreferrer">
+                  <div><b>{v.title}</b><span>{v.credit} · video</span></div>
+                  <span className="mono" style={{ fontSize: 12, color: "var(--pulse)" }}>Watch ↗</span>
+                </a>
+              ))}
               {press.map((p) => (
                 <a className="press-item" key={p.url} href={p.url} target="_blank" rel="noreferrer">
                   <div><b>{p.title}</b><span>{p.outlet} · {p.date}</span></div>

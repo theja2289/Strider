@@ -1,5 +1,6 @@
 import Reveal from "../components/Reveal";
-import { company } from "@shared/content";
+import { company, videos } from "@shared/content";
+import YouTubeFacade from "../components/YouTubeFacade";
 import { asset } from "../asset";
 
 export default function Photos() {
@@ -8,8 +9,13 @@ export default function Photos() {
       <div className="container">
         <div className="section-head">
           <Reveal><span className="eyebrow">In the metal</span></Reveal>
-          <Reveal delay={0.05}><h2 className="h-section">Built in Bengaluru. Walking in plants.</h2></Reveal>
+          <Reveal delay={0.05}><h2 className="h-section">Built in Bengaluru. Seen in the wild.</h2></Reveal>
           <Reveal delay={0.1}><div className="motto">{company.motto.map((m, i) => <span key={m}>{i > 0 && ""}<b>{m.split(" ")[0]}</b> {m.split(" ").slice(1).join(" ")}</span>)}</div></Reveal>
+        </div>
+        <div style={{ marginBottom: 18 }}>
+          <Reveal>
+            <YouTubeFacade id={videos[0].id} title={videos[0].title} poster={videos[0].poster} credit={videos[0].credit} />
+          </Reveal>
         </div>
         <div className="photos">
           <Reveal>

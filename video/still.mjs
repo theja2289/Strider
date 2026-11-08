@@ -1,0 +1,15 @@
+import { bundle } from "@remotion/bundler";
+import { getCompositions, renderStill } from "@remotion/renderer";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+import { webpackOverride } from "./webpack-override.mjs";
+const here = path.dirname(fileURLToPath(import.meta.url));
+const [id, frameStr, out] = process.argv.slice(2);
+const browserExecutable = "/usr/bin/google-chrome";
+const chromiumOptions = { gl: "swangle" };
+const serveUrl = await bundle({ entryPoint: path.resolve(here, "src/index.ts"), webpackOverride, publicDir: path.resolve(here, "public") });
+const comps = await getCompositions(serveUrl, { browserExecutable, chromiumOptions });
+const c = comps.find((x) => x.id === id);
+const t = Date.now();
+await renderStill({ composition: c, serveUrl, output: out, frame: Number(frameStr), browserExecutable, chromiumOptions, scale: 0.6667, imageFormat: "jpeg" });
+console.log("still", id, frameStr, ((Date.now() - t) / 1000).toFixed(1) + "s");

@@ -31,7 +31,7 @@ export const M3Reveal: React.FC = () => {
       </AbsoluteFill>
       <div style={{ opacity: fadeOut }}>
         <Corner />
-        <div style={{ position: "absolute", left: 96, top: 230, display: "grid", gap: 18, opacity: 1 - endcard, width: 760 }}>
+        <div style={{ position: "absolute", left: 96, top: 230, display: "grid", gap: 18, opacity: 1 - endcard, width: 980 }}>
           <Rise delay={20}><Eyebrow>Strider M3 · Industrial quadruped</Eyebrow></Rise>
           <Rise delay={28}><h1 style={display(76, 600)}>Legged robots for the<br />places wheels can't go.</h1></Rise>
         </div>

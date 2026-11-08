@@ -37,7 +37,7 @@ for (const c of todo) {
     crf: 22, imageFormat: "jpeg", jpegQuality: 90, pixelFormat: "yuv420p", muted: true, timeoutInMilliseconds: 240000,
     onProgress: ({ progress }) => { const p = Math.floor(progress * 10); if (p !== lastPct) { lastPct = p; process.stdout.write(`  ${c.id} ${p * 10}%\n`); } },
   });
-  const posterFrame = c.id === "brand-sting" ? Math.round(c.durationInFrames * 0.6) : c.id === "social-teaser" ? 45 : Math.round(c.durationInFrames * 0.45);
+  const posterFrame = c.id === "brand-sting" ? Math.round(c.durationInFrames * 0.6) : c.id === "social-teaser" ? 45 : c.id === "m3-reveal" ? Math.round(c.durationInFrames * 0.56) : Math.round(c.durationInFrames * 0.45);
   await renderStill({ composition: c, serveUrl, output: path.join(outDir, `${c.id}.jpg`), frame: posterFrame, browserExecutable, chromiumOptions, scale: s, imageFormat: "jpeg", jpegQuality: 85 });
   console.log(`✓ ${c.id} in ${((Date.now() - start) / 1000).toFixed(0)}s`);
 }

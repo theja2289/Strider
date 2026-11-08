@@ -48,8 +48,8 @@ export default function ExplodedView() {
       <div className="xv-track" ref={track}>
         <div className="xv-sticky">
           <div className="xv-canvas">
-            <M3Canvas camera={cam} target={[0, 0.65 + explode * 0.25, 0]} controls shadows={explode < 0.6}>
-              <M3Model explode={explode} highlight={active} onPartClick={(id) => setManual(id)} rotation={[0, -0.5, 0]} />
+            <M3Canvas camera={cam} target={[0, 0.6 + explode * 0.12, 0]} controls shadows={explode < 0.6}>
+              <M3Model explode={explode} highlight={active} onPartClick={(id) => setManual(id)} rotation={[0, -0.5, 0]} scale={1 - explode * 0.3} position={[0, explode * 0.12, 0]} />
               {active && explode > 0.05 && <Callout id={active} explode={explode} />}
               <GroundGrid fade={6} />
             </M3Canvas>

@@ -43,7 +43,7 @@ p { margin: 0; }
 .eyebrow { font-family: var(--mono); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--signal); display: inline-flex; align-items: center; gap: 10px; }
 .eyebrow::before { content: ""; width: 22px; height: 2px; background: var(--signal); }
 .eyebrow.pulse { color: var(--pulse); } .eyebrow.pulse::before { background: var(--pulse); }
-.h-display { font-size: clamp(40px, 7.2vw, 96px); }
+.h-display { font-size: clamp(40px, 6.6vw, 88px); }
 .h-section { font-size: clamp(30px, 4.6vw, 56px); }
 .lede { font-size: clamp(17px, 1.6vw, 21px); color: var(--fog); max-width: 60ch; }
 .mono { font-family: var(--mono); }
@@ -82,6 +82,8 @@ p { margin: 0; }
 /* Hero */
 .hero { min-height: 100svh; display: grid; align-items: center; position: relative; overflow: hidden; padding-top: 68px; }
 .hero-canvas { position: absolute; inset: 0; z-index: 0; }
+@media (min-width: 900px) { .hero-canvas { left: 22%; } }
+@media (min-width: 1400px) { .hero-canvas { left: 28%; } }
 .hero-canvas::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(90deg, rgba(11,14,18,.95) 0%, rgba(11,14,18,.75) 30%, rgba(11,14,18,.1) 60%, rgba(11,14,18,0) 100%), linear-gradient(180deg, rgba(11,14,18,0) 70%, var(--ink) 100%); }
 @media (max-width: 899px) { .hero-canvas::after { background: linear-gradient(180deg, rgba(11,14,18,.15) 0%, rgba(11,14,18,.1) 45%, rgba(11,14,18,.92) 70%, var(--ink) 100%); } }
 .hero-content { position: relative; z-index: 2; display: grid; gap: 26px; max-width: 640px; padding-block: 48px; }
